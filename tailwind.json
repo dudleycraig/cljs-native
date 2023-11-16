@@ -24,6 +24,8 @@
 			"display": "table"
 		}
 	},
+  "pb-12": {
+  },
 	"contents": {
 		"style": {
 			"display": "contents"

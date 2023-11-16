@@ -13,11 +13,17 @@
             [helix.core :as hc :refer [defnc fnc $ <>]]
             [helix.dom :as hd]
             [helix.hooks :as hh]
-            [cljs.pprint :as pp :refer [pprint]]))
+            [cljs.pprint :as pp :refer [pprint]]
+
+            [example.contexts.app-context :refer [AppContext]]            
+            [example.providers.app-provider :refer [AppProvider]]
+            
+            [example.screens.home :refer [Home]]
+            [example.screens.portfolio :refer [Portfolio]]
+            [example.screens.contact :refer [Contact]] 
+            [example.screens.resume :refer [Resume]]))
 
 (def tailwind-json (js/require "../tailwind.json"))
-
-(def state {:property "value"})
 
 (defonce shadow-splash (js/require "../assets/shadow-cljs.png"))
 (defonce cljs-splash (js/require "../assets/cljs.png"))
@@ -25,48 +31,10 @@
 (defonce Stack (createNativeStackNavigator))
 (defonce Tab (createBottomTabNavigator))
 
-(defonce AppContext (r/createContext state))
-
-(defnc AppProvider [{:keys [children] :as props}]
-  (let [[pages set-pages]   (hh/use-state [])
-        add-page            (hh/use-callback [set-pages] #(set-pages (conj pages %)))
-        remove-page         (hh/use-callback [set-pages] (fn [page] (set-pages (filter #(not= (get % :name) (get page :name)) pages))))]
-    (hc/provider
-      {:context AppContext 
-       :value {:pages pages :add-page add-page :remove-page remove-page}}
-      children)))
-
-(defnc Home [{:keys [navigation route] :as props}]
-  (let [tw (tailwind/useTailwind)
-        app-context (hh/use-context AppContext)
-        page (. route -name)]
-    ($ View {:style (tw "pb-12 bg-red-100")}
-      ($ Text page))))
-
-(defnc Portfolio [{:keys [navigation route] :as props}]
-  (let [tw (tailwind/useTailwind)
-        app-context (hh/use-context AppContext)
-        page (. route -name)]
-    ($ View {:style (tw "pb-12 bg-red-200")}
-      ($ Text page))))
-
-(defnc Contact [{:keys [navigation route] :as props}]
-  (let [tw (tailwind/useTailwind)
-        app-context (hh/use-context AppContext)
-        page (. route -name)]
-    ($ View {:style (tw "pb-12 bg-red-300")}
-      ($ Text page))))
-
-(defnc Resume [{:keys [navigation route] :as props}]
-  (let [tw (tailwind/useTailwind)
-        app-context (hh/use-context AppContext)
-        page (. route -name)]
-    ($ View {:style (tw "pb-12 bg-red-400")}
-      ($ Text page))))
 
 (defnc Root []
   ($ TailwindProvider {:utilities tailwind-json}
-     ($ AppProvider
+     ($ AppProvider {:context AppContext}
         ($ NavigationContainer
            ($ Tab.Navigator
               {:id "FooterNavigator"
