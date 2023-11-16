@@ -1,0 +1,9 @@
+{:deps {:aliases [:vim :ios]}
+ :builds
+ {:app
+  {:target :react-native
+   :init-fn example.app/init
+   :output-dir "app"
+   :compiler-options {:infer-externs false
+                      :output-feature-set :es5}
+   :devtools {:autoload true}}}}
