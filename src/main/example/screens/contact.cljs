@@ -8,12 +8,11 @@
             [helix.hooks :as hh]
             [cljs.pprint :as pp :refer [pprint]]
             
-            [example.contexts.app-context :as app-context]
-            [example.providers.app-provider :refer [AppProvider]]))
+            [example.providers.app-provider :as app-provider]))
 
 (defnc Contact [{:keys [navigation route] :as props}]
   (let [tw (tailwind/useTailwind)
-        app-context (app-context/use-context)
+        app-provider (app-provider/use-context)
         page (. route -name)]
     ($ View {:style (tw "pb-12 bg-red-200")}
       ($ Text page))))

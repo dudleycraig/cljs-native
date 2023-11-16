@@ -5,9 +5,11 @@
             [helix.core :as hc :refer [defnc fnc $ <>]]
             [helix.dom :as hd]
             [helix.hooks :as hh]
-            [cljs.pprint :as pp :refer [pprint]]
-            
-            [example.contexts.app-context :refer [AppContext]]))
+            [cljs.pprint :as pp :refer [pprint]]))
+
+(defonce AppContext (r/createContext {:property "value"}))
+
+(defn use-context [] (hh/use-context AppContext))
 
 (defnc AppProvider [{:keys [children] :as props}]
   (let [[pages set-pages]   (hh/use-state [])

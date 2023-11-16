@@ -15,8 +15,7 @@
             [helix.hooks :as hh]
             [cljs.pprint :as pp :refer [pprint]]
 
-            [example.contexts.app-context :refer [AppContext]]            
-            [example.providers.app-provider :refer [AppProvider]]
+            [example.providers.app-provider :as app-provider :refer [AppProvider]]
             
             [example.screens.home :refer [Home]]
             [example.screens.portfolio :refer [Portfolio]]
@@ -34,7 +33,7 @@
 
 (defnc Root []
   ($ TailwindProvider {:utilities tailwind-json}
-     ($ AppProvider {:context AppContext}
+     ($ AppProvider
         ($ NavigationContainer
            ($ Tab.Navigator
               {:id "FooterNavigator"
