@@ -13,6 +13,6 @@
 (defnc ScreenContainer [{:keys [children] :as props}]
   (let [tw (tailwind/useTailwind)]
     ($ View 
-       {:style (tw "flex flex-col flex-no-wrap justify-top content-center items-center w-full h-full p-2 bg-gray-200 border border-black")}
+       {:style (tw "flex flex-col flex-no-wrap justify-top content-center items-center w-full h-full p-2")}
        children)))
 

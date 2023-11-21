@@ -11,7 +11,7 @@
 (defnc MainHeader [{:keys [navigation route options] :as props}]
   (let [tw (tailwind/useTailwind)]
     ($ View
-      {:style (tw "flex flex-row flex-no-wrap justify-center content-center items-center w-full h-16 border border-tp-black")}
+      {:style (tw "flex flex-row flex-no-wrap justify-center content-center items-center w-full h-16 border-b border-solid border-b-black")}
       ($ Text {:style (tw "")} "(")
       ($ Text {:style (tw "text-xl font-bold mr-1")} "𝑓")
       ($ Text (. options -title))

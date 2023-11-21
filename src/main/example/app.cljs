@@ -16,6 +16,14 @@
             [cljs.pprint :as pp :refer [pprint]]
 
             [example.providers.app-provider :as app-provider :refer [AppProvider]]
+
+            [example.store.contracts]
+            [example.store.developer-roles]
+            [example.store.employers]
+            [example.store.icons]
+            [example.store.images]
+            [example.store.projects]
+            [example.store.technologies]
             
             [example.screens.home :refer [Home]]
             [example.screens.portfolio :refer [Portfolio]]
@@ -39,10 +47,10 @@
                                   route        (. js-params -route)]
                               #js {:tabBarLabelStyle #js {}
                                    :header (fn [props] ($ MainHeader {:navigation navigation :route route & props}))}))}
+          ($ Tab.Screen {:name "resume" :options #js {:title "Résumé"}} Resume)
           ($ Tab.Screen {:name "home" :options #js {:title "Home"}} Home)
           ($ Tab.Screen {:name "portfolio" :options #js {:title "Portfolio"}} Portfolio)
-          ($ Tab.Screen {:name "contact" :options #js {:title "Contact"}} Contact)
-          ($ Tab.Screen {:name "resume" :options #js {:title "Resume'"}} Resume))))))
+          ($ Tab.Screen {:name "contact" :options #js {:title "Contact"}} Contact))))))
 
 (defn start
   {:dev/after-load true}
