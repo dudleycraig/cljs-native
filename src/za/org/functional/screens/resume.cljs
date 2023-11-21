@@ -1,0 +1,21 @@
+(ns za.org.functional.screens.resume
+  (:require ["react" :as r]
+            ["react-native" :as rn :refer [View Text StyleSheet Button]]
+            ["tailwind-rn" :as tailwind]
+ 
+            [helix.core :as hc :refer [defnc fnc $ <>]]
+            [helix.dom :as hd]
+            [helix.hooks :as hh]
+            [cljs.pprint :as pp :refer [pprint]]
+            
+            [za.org.functional.providers.app-provider :as app-provider]
+
+            [za.org.functional.components.skills :refer [Skills]]
+            [za.org.functional.components.screen-container :refer [ScreenContainer]]))
+
+(defnc Resume [{:keys [navigation route] :as props}]
+  (let [tw (tailwind/useTailwind)
+        app-provider (app-provider/use-context)
+        page (. route -name)]
+    ($ ScreenContainer
+       ($ Skills))))

@@ -8,7 +8,7 @@
  :aliases 
  {:ios
   {:extra-paths
-   ["src/main" "src/test"]}
+   ["src" "test"]}
   :extra-deps
   {}
 
