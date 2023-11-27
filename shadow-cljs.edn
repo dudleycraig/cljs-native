@@ -1,4 +1,4 @@
-{:deps {:aliases [:vim :ios]}
+{:deps {:aliases [:vim :test]}
  :builds
  {:app
   {:target :react-native
@@ -6,4 +6,7 @@
    :output-dir "app"
    :compiler-options {:infer-externs false
                       :output-feature-set :es5}
-   :devtools {:autoload true}}}}
+   :devtools {:autoload true}}
+  :test 
+  {:target :react-native
+   :test-dir "app/test"}}}

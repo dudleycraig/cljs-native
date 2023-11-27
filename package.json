@@ -2,7 +2,7 @@
   "scripts": {
     "server": "npx shadow-cljs server",
     "start": "npx expo start",
-    "watch:shadow": "npx shadow-cljs watch app -A:vim:ios",
+    "watch:shadow": "npx shadow-cljs watch app",
     "watch:tailwind": "concurrently \"tailwindcss --input input.css --output tailwind.css --no-autoprefixer --watch\" \"tailwind-rn --watch\"",
     "android": "npx expo start --android",
     "ios": "npx expo start --ios",
@@ -32,7 +32,12 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
+    "karma": "^6.4.2",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-cljs-test": "^0.1.0",
+    "karma-firefox-launcher": "^2.1.2",
     "postcss": "^8.4.31",
+    "react-testing-library": "^8.0.1",
     "shadow-cljs": "^2.23.3",
     "tailwindcss": "^3.3.5"
   },

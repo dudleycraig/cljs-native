@@ -17,14 +17,6 @@
 
             [za.org.functional.providers.app-provider :as app-provider :refer [AppProvider]]
 
-            [za.org.functional.store.contracts]
-            [za.org.functional.store.developer-roles]
-            [za.org.functional.store.employers]
-            [za.org.functional.store.icons]
-            [za.org.functional.store.images]
-            [za.org.functional.store.projects]
-            [za.org.functional.store.technologies]
-            
             [za.org.functional.screens.home :refer [Home]]
             [za.org.functional.screens.portfolio :refer [Portfolio]]
             [za.org.functional.screens.contact :refer [Contact]] 
