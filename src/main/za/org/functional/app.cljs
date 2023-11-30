@@ -5,7 +5,7 @@
             ["@react-navigation/native-stack" :as rnns :refer [createNativeStackNavigator]]
             ["@react-navigation/bottom-tabs" :as rnbt :refer [createBottomTabNavigator]]
 
-            ["tailwind-rn" :refer [TailwindProvider] :as tailwind]
+            ["tailwind-rn" :as tailwind :refer [TailwindProvider]]
  
             ["expo-status-bar" :refer [StatusBar]]
             [expo.root :refer [render-root]]
@@ -24,7 +24,7 @@
            
             [za.org.functional.components.main-header :refer [MainHeader]]))
 
-(def tailwind-json (js/require "../tailwind.json"))
+(def tailwind-json (js/require "../../tailwind.json"))
 
 (defonce Tab (createBottomTabNavigator))
 
@@ -35,14 +35,15 @@
         ($ Tab.Navigator
           {:id "FooterNavigator"
            :screenOptions (fn [js-params]
-                            (let [navigation   (. js-params -navigation)
-                                  route        (. js-params -route)]
+                            (let [navigation   (. js-params -navigation)]
                               #js {:tabBarLabelStyle #js {}
-                                   :header (fn [props] ($ MainHeader {:navigation navigation :route route & props}))}))}
+                                   :header (fn [props] ($ MainHeader {:navigation navigation & props}))}))}
           ($ Tab.Screen {:name "resume" :options #js {:title "Résumé"}} Resume)
           ($ Tab.Screen {:name "home" :options #js {:title "Home"}} Home)
           ($ Tab.Screen {:name "portfolio" :options #js {:title "Portfolio"}} Portfolio)
           ($ Tab.Screen {:name "contact" :options #js {:title "Contact"}} Contact))))))
+
+(comment (println "'lo from app to repl"))
 
 (defn start
   {:dev/after-load true}

@@ -1,12 +1,28 @@
-{:deps {:aliases [:vim :test]}
- :builds
- {:app
-  {:target :react-native
-   :init-fn za.org.functional.app/init
-   :output-dir "app"
-   :compiler-options {:infer-externs false
-                      :output-feature-set :es5}
-   :devtools {:autoload true}}
-  :test 
-  {:target :react-native
-   :test-dir "app/test"}}}
+{:deps {:aliases [:main]}
+ :builds {:main         {:target :react-native
+                         :init-fn za.org.functional.app/init
+                         :output-dir "build/main"
+                         :compiler-options {:output-feature-set :es2020
+                                            :infer-externs true
+                                            :source-map false
+                                            :static-fns false
+                                            :warnings {:fn-deprecated false}}
+                         :devtools {:autoload true}}
+
+          :node-test    {:target :node-test
+                         :output-to "build/test/node/node-tests.js"
+                         :output-dir "build/test/node"
+                         :ns-regexp "-test$"
+                         :main kaocha.cljs2.shadow-runner/start}
+
+          :browser-test  {:target :browser-test
+                          :test-dir "build/test/browser"
+                          :runner-ns kaocha.cljs2.shadow-runner
+                          :ns-regexp ".*-test$"
+                          :compiler-options {:externs ["datascript/externs.js"]}
+                          :devtools {:http-port 19009
+                                     :http-root "build/test/browser"
+                                     :preloads [lambdaisland.chui.remote]}}}}
+
+
+

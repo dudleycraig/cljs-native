@@ -8,7 +8,7 @@
             [helix.hooks :as hh]
             [cljs.pprint :as pp :refer [pprint]]))
 
-(defnc MainHeader [{:keys [navigation route options] :as props}]
+(defnc MainHeader [{:keys [navigation options] :as props}]
   (let [tw (tailwind/useTailwind)]
     ($ View
       {:style (tw "flex flex-row flex-no-wrap justify-center content-center items-center w-full h-16 border-b border-solid border-b-black")}

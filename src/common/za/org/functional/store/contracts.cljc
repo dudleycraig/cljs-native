@@ -2,7 +2,7 @@
   (:require
    [clojure.spec.alpha :as s]))
 
-(def data 
+(def data
   {:full-time {:name "full-time" :description "Full-time contracts are offered to permanent employees who work a full workweek, usually 35 hours or more. These contracts usually include information about benefits, paid holidays, vacation time, sick time and retirement plans. Even further, some full-time contracts present new employees with opportunities for other benefits, like professional development opportunities or workplace perks. Full-time contracts are almost always written contracts since they include many components, and employers normally want to be thorough and clear when offering such an extensive agreement."}
    :part-time {:name "part-time" :description "Part-time contracts are extended to employees who work a reduced number of hours compared to full-time employees. Typically, part-time contracts are offered to those who serve less than 35 hours per week and often include some of the same stipulations and protections as full-time contracts. Many part-time schedules detail the employee's flexibilities, weekly schedule and rate of pay. However, it is important to note that part-time contracts usually do not include information regarding insurance, salary or PTO—all benefits typically reserved for full-time employees."}
    :zero-hour {:name "zero-hour" :description "Zero-hour contracts are offered to employees who work irregularly or only when work is available. In zero-hour agreements, an employer agrees, in writing or verbally, that they will offer work when it is available, and an employee agrees to work such shifts or remain on call for availability purposes. Zero-hour contracts commonly specify that an employee will work a minimum amount of hours or shifts per month—a number set by the employer in most cases—and that the employee holds the right to refuse any work assignments that may be inopportune.\nZero-hour contracts are often used to hire temporary employees, such as day laborers or babysitters. Unlike full-time and part-time contracts, though, zero-hour contracts do not include information about the standard rate of pay, regular scheduling or benefits, as zero-hour employees are not typically offered such protections."}
@@ -17,5 +17,7 @@
                           :opt-un []))
 (s/def ::contracts (s/map-of ::key ::contract))
 
+(comment (println "'lo repl"))
 (comment (s/explain ::contracts data))
+
 

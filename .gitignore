@@ -5,6 +5,8 @@ npm-debug.*
 *.p12
 *.key
 *.mobileprovision
+.store/
+build/
 out/
 .shadow-cljs/
 .nrepl-port
@@ -20,3 +22,4 @@ app
 .lsp/.cache
 .clj-kondo/.cache
 .lsp/sqlite.db
+

@@ -13,7 +13,7 @@
 (defnc ProfilePicture [props]
   (let [tw (tailwind/useTailwind)]
     ($ Image
-      {:source (js/require "../assets/images/profile.jpg")
+      {:source (js/require "../../assets/images/profile.jpg")
        :style (. js/Object assign
                  (clj->js {:resizeMode "center" :width 100 :height 100})
                  (tw "border border-black rounded"))})))

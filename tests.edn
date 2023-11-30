@@ -1,0 +1,18 @@
+#kaocha/v1
+{:plugins [:kaocha.plugin/hooks]
+ :reporter kaocha.report/documentation
+ :capture-output? false
+ :bindings {kaocha.stacktrace/*stacktrace-filters* []}
+ :tests [{:id :browser-test
+          :shadow/build :browser-test
+          :type :kaocha.type/cljs2
+          :test-paths ["src/test"]
+          :source-paths ["src/main" "src/common"]
+          :plugins [:print-invocations :hooks]
+          :ns-patterns [".*-test$"]
+          :browse-url "http://localhost:19009"
+          :kaocha.hooks/pre-load-test kaocha.hooks/pre-load
+          :kaocha.cljs2/clients/hook kaocha.hooks/launch-real-browser-and-wait}
+         {:id :unit
+          :test-paths ["src/main" "src/common" "src/test"]
+          :ns-patterns [".*-test$"]}]}
